@@ -75,14 +75,11 @@ export default class ImageSearch extends React.Component {
     const image = get(formTemplate, 'image', '')
 
     if (type === 'add') {
-      set(
-        formTemplate,
-        'name',
-        `${image
-          .toLowerCase()
-          .split(':')[0]
-          .replace(/[/.]*/g, '')}-${generateId()}`
-      )
+      const name = `${image
+        .toLowerCase()
+        .split(':')[0]
+        .replace(/[/.]*/g, '')}-${generateId()}`.slice(-60)
+      set(formTemplate, 'name', name)
       this.context.forceUpdate()
     }
     if (this.image && image === this.image) {
