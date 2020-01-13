@@ -254,9 +254,11 @@ export default class PipelineStore extends BaseStore {
         branch,
       }
     )
+
     this.branchList = {
       data: result || [],
       limit: TABLE_LIMIT,
+      total: this.detail.totalNumberOfBranches,
       page: parseInt(page, 10) || 1,
       filters: omit(filters, 'project_id'),
       isLoading: false,
